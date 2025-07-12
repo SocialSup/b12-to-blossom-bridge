@@ -1,59 +1,38 @@
-import { ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
+import heroImage from "@/assets/hero-image.jpg";
 
 const HeroSection = () => {
   return (
-    <section className="min-h-[80vh] flex items-center bg-gradient-subtle">
-      <div className="container mx-auto px-4">
-        <div className="grid lg:grid-cols-2 gap-12 items-center">
-          {/* Content */}
-          <div className="space-y-8">
-            <div className="space-y-4">
-              <h1 className="text-5xl lg:text-6xl font-bold leading-tight">
-                Bienvenue sur
-                <span className="bg-gradient-hero bg-clip-text text-transparent">
-                  {" "}Notre Site
-                </span>
-              </h1>
-              <p className="text-xl text-muted-foreground leading-relaxed">
-                Découvrez nos services exceptionnels et notre expertise 
-                pour vous accompagner dans tous vos projets.
-              </p>
-            </div>
-            
-            <div className="flex flex-col sm:flex-row gap-4">
-              <Button 
-                size="lg"
-                asChild
-                className="bg-gradient-primary hover:shadow-glow transition-smooth"
-              >
-                <Link to="/services">
-                  Nos Services 
-                  <ArrowRight className="ml-2 h-5 w-5" />
-                </Link>
-              </Button>
-              <Button 
-                size="lg" 
-                variant="outline"
-                asChild
-                className="hover:bg-secondary transition-smooth"
-              >
-                <Link to="/about">En savoir plus</Link>
-              </Button>
-            </div>
-          </div>
+    <section className="relative min-h-[80vh] flex items-center">
+      {/* Background Image with Overlay */}
+      <div 
+        className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+        style={{ backgroundImage: `url(${heroImage})` }}
+      >
+        <div className="absolute inset-0 bg-black/40"></div>
+      </div>
 
-          {/* Image placeholder */}
-          <div className="relative">
-            <div className="aspect-square bg-gradient-primary rounded-3xl shadow-elegant flex items-center justify-center">
-              <div className="text-white text-center space-y-4">
-                <div className="w-32 h-32 bg-white/20 rounded-full mx-auto flex items-center justify-center backdrop-blur-sm">
-                  <span className="text-4xl">🚀</span>
-                </div>
-                <p className="text-lg font-medium">Votre contenu ici</p>
-              </div>
-            </div>
+      <div className="relative container mx-auto px-4 text-center text-white">
+        <div className="max-w-4xl mx-auto space-y-8">
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight">
+            Rejoignez les métiers du médico-social grâce à une formation à distance certifiante
+          </h1>
+          
+          <p className="text-xl md:text-2xl leading-relaxed opacity-90">
+            Un accompagnement personnalisé pour réaliser vos ambitions professionnelles.
+          </p>
+          
+          <div className="pt-4">
+            <Button 
+              size="lg"
+              asChild
+              className="bg-gradient-primary hover:shadow-glow transition-smooth text-lg px-8 py-4 border border-primary/20"
+            >
+              <Link to="/nos-formations">
+                DÉCOUVREZ NOS FORMATIONS
+              </Link>
+            </Button>
           </div>
         </div>
       </div>

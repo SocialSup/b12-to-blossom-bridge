@@ -2,7 +2,7 @@ import Navigation from "@/components/Navigation";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import { Mail, Phone, MapPin } from "lucide-react";
+import { Mail, Phone, MapPin, Clock } from "lucide-react";
 
 const Contact = () => {
   const handleSubmit = (e: React.FormEvent) => {
@@ -17,14 +17,10 @@ const Contact = () => {
       <div className="container mx-auto px-4 py-16">
         <div className="text-center space-y-6 mb-16">
           <h1 className="text-4xl lg:text-5xl font-bold">
-            Contactez
-            <span className="bg-gradient-hero bg-clip-text text-transparent">
-              {" "}nous
-            </span>
+            <span className="text-primary">Contact</span>
           </h1>
           <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-            [Votre contenu B12 sera inséré ici] - N'hésitez pas à nous contacter 
-            pour discuter de votre projet
+            Nous vous accompagnons vers la réussite!
           </p>
         </div>
 
@@ -33,40 +29,25 @@ const Contact = () => {
           <div className="bg-white rounded-2xl p-8 shadow-elegant">
             <h2 className="text-2xl font-semibold mb-6">Envoyez-nous un message</h2>
             <form onSubmit={handleSubmit} className="space-y-6">
-              <div className="grid sm:grid-cols-2 gap-4">
-                <div>
-                  <label htmlFor="firstName" className="block text-sm font-medium mb-2">
-                    Prénom
-                  </label>
-                  <Input id="firstName" placeholder="Votre prénom" required />
-                </div>
-                <div>
-                  <label htmlFor="lastName" className="block text-sm font-medium mb-2">
-                    Nom
-                  </label>
-                  <Input id="lastName" placeholder="Votre nom" required />
-                </div>
+              <div>
+                <label htmlFor="name" className="block text-sm font-medium mb-2">
+                  Nom *
+                </label>
+                <Input id="name" placeholder="Votre nom" required />
               </div>
               
               <div>
                 <label htmlFor="email" className="block text-sm font-medium mb-2">
-                  Email
+                  Email *
                 </label>
                 <Input id="email" type="email" placeholder="votre@email.com" required />
               </div>
               
               <div>
                 <label htmlFor="phone" className="block text-sm font-medium mb-2">
-                  Téléphone (optionnel)
+                  Téléphone *
                 </label>
-                <Input id="phone" type="tel" placeholder="+33 1 23 45 67 89" />
-              </div>
-              
-              <div>
-                <label htmlFor="subject" className="block text-sm font-medium mb-2">
-                  Sujet
-                </label>
-                <Input id="subject" placeholder="L'objet de votre message" required />
+                <Input id="phone" type="tel" placeholder="+33 6 76 60 41 25" required />
               </div>
               
               <div>
@@ -77,15 +58,26 @@ const Contact = () => {
                   id="message" 
                   placeholder="Décrivez votre projet ou votre demande..."
                   className="min-h-[120px]"
+                />
+              </div>
+              
+              <div className="flex items-start space-x-2">
+                <input 
+                  type="checkbox" 
+                  id="consent" 
+                  className="mt-1" 
                   required 
                 />
+                <label htmlFor="consent" className="text-sm text-muted-foreground">
+                  J'autorise ce site web à stocker les informations de ma demande afin de pouvoir y répondre. *
+                </label>
               </div>
               
               <Button 
                 type="submit" 
                 className="w-full bg-gradient-primary hover:shadow-glow transition-smooth"
               >
-                Envoyer le message
+                Envoyer
               </Button>
             </form>
           </div>
@@ -93,31 +85,35 @@ const Contact = () => {
           {/* Informations de contact */}
           <div className="space-y-8">
             <div className="bg-white rounded-2xl p-8 shadow-elegant">
-              <h2 className="text-2xl font-semibold mb-6">Nos coordonnées</h2>
+              <h2 className="text-2xl font-semibold mb-6">Contact</h2>
               <div className="space-y-6">
-                <div className="flex items-start space-x-4">
-                  <div className="w-12 h-12 bg-gradient-primary rounded-lg flex items-center justify-center flex-shrink-0">
-                    <Mail className="h-6 w-6 text-white" />
-                  </div>
-                  <div>
-                    <h3 className="font-semibold mb-1">Email</h3>
-                    <p className="text-muted-foreground">contact@monsite.com</p>
-                    <p className="text-muted-foreground text-sm">
-                      Nous répondons sous 24h
-                    </p>
-                  </div>
-                </div>
-                
                 <div className="flex items-start space-x-4">
                   <div className="w-12 h-12 bg-gradient-primary rounded-lg flex items-center justify-center flex-shrink-0">
                     <Phone className="h-6 w-6 text-white" />
                   </div>
                   <div>
                     <h3 className="font-semibold mb-1">Téléphone</h3>
-                    <p className="text-muted-foreground">+33 1 23 45 67 89</p>
-                    <p className="text-muted-foreground text-sm">
-                      Lun-Ven: 9h-18h
-                    </p>
+                    <a 
+                      href="tel:+33676604125" 
+                      className="text-primary hover:underline"
+                    >
+                      +33 6 76 60 41 25
+                    </a>
+                  </div>
+                </div>
+                
+                <div className="flex items-start space-x-4">
+                  <div className="w-12 h-12 bg-gradient-primary rounded-lg flex items-center justify-center flex-shrink-0">
+                    <Mail className="h-6 w-6 text-white" />
+                  </div>
+                  <div>
+                    <h3 className="font-semibold mb-1">Email</h3>
+                    <a 
+                      href="mailto:contact@socialsup.fr" 
+                      className="text-primary hover:underline"
+                    >
+                      contact@socialsup.fr
+                    </a>
                   </div>
                 </div>
                 
@@ -126,12 +122,33 @@ const Contact = () => {
                     <MapPin className="h-6 w-6 text-white" />
                   </div>
                   <div>
-                    <h3 className="font-semibold mb-1">Adresse</h3>
+                    <h3 className="font-semibold mb-1">Localisation</h3>
                     <p className="text-muted-foreground">
-                      123 Rue de la République<br />
-                      75001 Paris, France
+                      Cuincy, Hauts de France<br />
+                      59553 FR
                     </p>
                   </div>
+                </div>
+              </div>
+            </div>
+
+            <div className="bg-white rounded-2xl p-8 shadow-elegant">
+              <h3 className="text-xl font-semibold mb-4 flex items-center">
+                <Clock className="h-5 w-5 text-primary mr-2" />
+                Horaires
+              </h3>
+              <div className="space-y-2 text-sm">
+                <div className="flex justify-between">
+                  <span>Lundi - Vendredi</span>
+                  <span className="text-muted-foreground">9:00 - 13:00</span>
+                </div>
+                <div className="flex justify-between">
+                  <span>Samedi</span>
+                  <span className="text-muted-foreground">9:00 - 12:00</span>
+                </div>
+                <div className="flex justify-between">
+                  <span>Dimanche</span>
+                  <span className="text-muted-foreground">9:00 - 12:00</span>
                 </div>
               </div>
             </div>
@@ -142,10 +159,13 @@ const Contact = () => {
                 Appelez-nous directement pour une consultation immédiate
               </p>
               <Button 
+                asChild
                 variant="secondary" 
                 className="bg-white text-primary hover:bg-white/90"
               >
-                Appeler maintenant
+                <a href="tel:+33676604125">
+                  Appeler maintenant
+                </a>
               </Button>
             </div>
           </div>

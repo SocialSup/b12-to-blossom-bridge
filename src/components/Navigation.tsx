@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import logoSocialSup from "@/assets/logo-socialsup.png";
 
 const Navigation = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -9,9 +10,9 @@ const Navigation = () => {
 
   const navItems = [
     { href: "/", label: "Accueil" },
-    { href: "/about", label: "À propos" },
-    { href: "/services", label: "Services" },
-    { href: "/contact", label: "Contact" },
+    { href: "/qui-sommes-nous", label: "Qui Sommes-Nous?" },
+    { href: "/notre-mission", label: "Notre Mission" },
+    { href: "/nos-formations", label: "Nos Formations" },
   ];
 
   const isActive = (href: string) => {
@@ -23,8 +24,12 @@ const Navigation = () => {
       <div className="container mx-auto px-4">
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
-          <Link to="/" className="font-bold text-xl text-primary">
-            MonSite
+          <Link to="/" className="flex items-center space-x-2">
+            <img 
+              src={logoSocialSup} 
+              alt="Social Sup" 
+              className="h-10 w-auto"
+            />
           </Link>
 
           {/* Desktop Navigation */}
@@ -48,9 +53,9 @@ const Navigation = () => {
           <div className="hidden md:block">
             <Button 
               asChild
-              className="bg-gradient-primary hover:shadow-glow transition-smooth"
+              className="bg-gradient-primary hover:shadow-glow transition-smooth border border-primary/10"
             >
-              <Link to="/contact">Contactez-nous</Link>
+              <Link to="/contact">CONTACT</Link>
             </Button>
           </div>
 
@@ -86,7 +91,7 @@ const Navigation = () => {
                 className="bg-gradient-primary hover:shadow-glow transition-smooth w-fit"
               >
                 <Link to="/contact" onClick={() => setIsOpen(false)}>
-                  Contactez-nous
+                  CONTACT
                 </Link>
               </Button>
             </div>
